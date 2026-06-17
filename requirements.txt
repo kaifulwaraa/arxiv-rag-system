@@ -1,0 +1,14 @@
+streamlit
+qdrant-client
+sentence-transformers
+rank-bm25
+groq
+python-dotenv
+pymupdf
+pdfplumber
+langchain==0.3.27
+langchain-core==0.3.86
+langchain-groq==0.3.8
+langchain-text-splitters==0.3.11
+ragas==0.2.15
+cross-encoder
