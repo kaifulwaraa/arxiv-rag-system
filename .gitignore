@@ -1,0 +1,10 @@
+venv/
+.env
+data/raw/
+models/
+__pycache__/
+*.pyc
+.streamlit/
+data/processed/chunks_export.json
+data/processed/training_pairs.json
+data/processed/training_pairs_v2.json

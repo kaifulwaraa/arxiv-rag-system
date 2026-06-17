@@ -1,0 +1,102 @@
+[
+    {
+        "question": "What is the main purpose of the MultiHop-RAG benchmark?",
+        "ground_truth": "MultiHop-RAG is a benchmark dataset designed to evaluate retrieval and reasoning across multiple documents in RAG systems, where answering requires synthesizing information from several sources.",
+        "source": "2401.15391v1.pdf"
+    },
+    {
+        "question": "What are the limitations mentioned in the MultiHop-RAG paper?",
+        "ground_truth": "The limitations include that ground truth answers are restricted to simple responses which may not be sufficient for evaluating generation performance.",
+        "source": "2401.15391v1.pdf"
+    },
+    {
+        "question": "What types of questions does MultiHop-RAG contain?",
+        "ground_truth": "MultiHop-RAG contains questions that require retrieving and reasoning across multiple documents including inference questions, comparison questions, and temporal questions.",
+        "source": "2401.15391v1.pdf"
+    },
+    {
+        "question": "What makes multi-hop questions harder than single-hop questions for RAG systems?",
+        "ground_truth": "Multi-hop questions require synthesizing information from multiple documents rather than a single source, making retrieval more challenging as the system must find and connect relevant information across several chunks.",
+        "source": "2401.15391v1.pdf"
+    },
+    {
+        "question": "What is the goal of MultiHop-RAG for the research community?",
+        "ground_truth": "MultiHop-RAG aims to provide a valuable resource to the community contributing to the advancement and benchmarking of RAG systems.",
+        "source": "2401.15391v1.pdf"
+    },
+    {
+        "question": "What is the primary limitation of existing retrieval-augmented code generation RACG pipelines according to the authors and how does the proposed EvOR framework address it?",
+        "ground_truth": "Existing RACG pipelines use static retrieval that does not adapt during generation. EvOR addresses this through iterative evolution of both queries and knowledge base simultaneously.",
+        "source": "2402.12317v2.pdf"
+    },
+    {
+        "question": "In the EvOR pipeline what specific elements compose the Knowledge Soup and how does the knowledge base evolve over multiple iterations?",
+        "ground_truth": "The Knowledge Soup is composed of retrieved code snippets and documentation that evolves iteratively as queries are refined and new relevant knowledge is retrieved across multiple iterations.",
+        "source": "2402.12317v2.pdf"
+    },
+    {
+        "question": "What is EVOR-BENCH and what are the specific reasons behind selecting the four specific datasets Scipy-M Tensorflow-M Ring and Pony?",
+        "ground_truth": "EVOR-BENCH is a benchmark for evaluating retrieval augmented code generation. The four datasets were selected to cover diverse programming domains and difficulty levels.",
+        "source": "2402.12317v2.pdf"
+    },
+    {
+        "question": "How does EvOR perform compared to the DocPrompting baseline and what architectural difference explains this performance gap?",
+        "ground_truth": "EvOR outperforms DocPrompting due to its iterative query and knowledge evolution mechanism versus DocPrompting's static single-pass retrieval approach.",
+        "source": "2402.12317v2.pdf"
+    },
+    {
+        "question": "Based on the paper's ablation studies what impact does the synchronous evolution of both queries and knowledge have compared to evolving only one of those components?",
+        "ground_truth": "Synchronous evolution of both queries and knowledge produces better performance than evolving only one component, demonstrating that both elements contribute independently to overall system improvement.",
+        "source": "2402.12317v2.pdf"
+    },
+    {
+        "question": "What core limitation of traditional keyword and similarity-based RAG retrievers does the Blended RAG pipeline seek to solve?",
+        "ground_truth": "Blended RAG addresses the limitation that traditional keyword and similarity-based retrievers work in isolation. Most prior work focused on improving generation rather than retrieval quality.",
+        "source": "2402.11228v2.pdf"
+    },
+    {
+        "question": "What are the three primary database indices evaluated in the Blended RAG framework?",
+        "ground_truth": "The three primary indices are dense vector index, sparse vector index, and keyword index, with multi-match field categories introduced to optimize retrieval over complex data layouts.",
+        "source": "2402.11228v2.pdf"
+    },
+    {
+        "question": "How does the presence or absence of rich metadata impact the effectiveness of Blended RAG complex hybrid query formulations based on CoQA dataset evaluation?",
+        "ground_truth": "Rich metadata significantly improves the effectiveness of complex hybrid query formulations in Blended RAG as it provides additional context for more precise retrieval.",
+        "source": "2402.11228v2.pdf"
+    },
+    {
+        "question": "What are the processing efficiency querying speed and storage tradeoffs between Dense Vector and Sparse Vector indexing in large scale contexts like the 5 million document HotPotQA corpus?",
+        "ground_truth": "Dense vectors offer better semantic search but require more storage and slower querying at scale. Sparse vectors are more storage efficient and faster to query but less semantically rich.",
+        "source": "2402.11228v2.pdf"
+    },
+    {
+        "question": "How did Zero-shot Blended RAG compare against domain adapted fine-tuned baselines like RAG-end2end on the Stanford Question Answering Dataset in terms of F1 performance?",
+        "ground_truth": "Zero-shot Blended RAG achieved competitive F1 performance against fine-tuned baselines like RAG-end2end on SQUAD demonstrating strong generalization without domain specific training.",
+        "source": "2402.11228v2.pdf"
+    },
+    {
+        "question": "What unique challenges do 3GPP standard documents present to standard RAG pipelines?",
+        "ground_truth": "3GPP documents contain highly technical content with complex hierarchical structure and extensive acronyms that generic RAG systems struggle to parse and retrieve accurately.",
+        "source": "2404.15939v3.pdf"
+    },
+    {
+        "question": "How does Telco-RAG approach document chunking to preserve hierarchical semantic context and handle technical acronyms?",
+        "ground_truth": "Telco-RAG uses structure-aware chunking that preserves document hierarchy and implements an acronym resolution strategy to expand technical terms before retrieval.",
+        "source": "2404.15939v3.pdf"
+    },
+    {
+        "question": "What specific embedding models and similarity metrics are evaluated in the Telco-RAG framework?",
+        "ground_truth": "Telco-RAG evaluates multiple embedding models and similarity metrics to determine the most effective combination for retrieving from technical 3GPP documentation.",
+        "source": "2404.15939v3.pdf"
+    },
+    {
+        "question": "How does the choice of LLM impact generation accuracy when answering complex 3GPP network configuration questions within Telco-RAG?",
+        "ground_truth": "Larger models like GPT-4 significantly outperform smaller open-weights models on complex 3GPP questions due to better instruction following and technical reasoning capabilities.",
+        "source": "2404.15939v3.pdf"
+    },
+    {
+        "question": "What tradeoffs do the authors note regarding frequency of updating the vector index versus computational cost in Telco-RAG?",
+        "ground_truth": "Frequent index updates ensure coverage of new 3GPP releases but incur significant computational cost and increased prompt token overhead making update frequency a key system design tradeoff.",
+        "source": "2404.15939v3.pdf"
+    }
+]
