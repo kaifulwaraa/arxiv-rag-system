@@ -4,13 +4,19 @@ A production-grade Retrieval-Augmented Generation system that benchmarks 3 retri
 
 ## Demo
 
-> **Q: What is the UCT algorithm, its formula, and how does RAG-Star use it?**
->
-> The UCT algorithm (Upper Confidence bounds applied to Trees) balances exploration and exploitation. Formula: `UCT(st) = V(st) + w * sqrt(ln N(p) / N(st))` where V(st) is expected reward, w=0.2 in RAG-Star, N(p) is parent visits, N(st) is child visits. RAG-Star selects the highest UCT child node layer-by-layer from root to leaf.
+### Q&A Examples
 
-> **Q: According to Table III in Telco-RAG, what was the initial and refined accuracy for Text-embed-3-large with chunk size 125 and context length 750?**
->
-> Initial accuracy: 0.744, Refined accuracy: 0.780 (+3.6% improvement).
+![Question 1](question%201.jpg)
+
+![Question 2](question%202.jpg)
+
+### Benchmark
+
+![Benchmark](benchmark.jpg)
+
+### Full Demo
+
+![Demo](Recording5-ezgif.com-reverse.gif)
 
 ## Architecture
 User Question
