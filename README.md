@@ -16,27 +16,7 @@ Given a question, it classifies the question type, plans multiple targeted sub-q
 
 ## Architecture
 
-```mermaid
-graph TD
-    A[User Question] --> B[Question Classifier]
-    B --> C1[SIMPLE]
-    B --> C2[MULTI_PART]
-    B --> C3[COMPARISON]
-    B --> C4[COMPLEX]
-    B --> C5[CROSS_PAPER]
-    C1 & C2 & C3 & C4 --> D[Query Planner\n2-3 sub-queries]
-    C5 --> E[Cross-Paper Planner\n4-5 sub-queries]
-    D & E --> F[Hybrid Retriever\nBM25 + Vector + Reranking]
-    F --> G[Multimodal Chunks\nText · Tables · Figures]
-    G --> H[Groq LLaMA 3.3 70B\nAnswer Generation]
-    H --> I{Self-Check\nIs answer complete?}
-    I -->|Yes| J[Final Answer]
-    I -->|No| K[Refine Queries\nSearch Again]
-    K --> F
-```
-
----
-
+![Architecture](architecture.png)
 ## Q&A Examples
 
 ### Agentic Multi-part Question
