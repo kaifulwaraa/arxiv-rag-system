@@ -2,7 +2,7 @@
 
 > Production-grade agentic RAG system benchmarking 3 retrieval strategies over 20 ArXiv papers — with multimodal extraction, hybrid reranking, and autonomous query planning.
 
-![Homepage](homepage.jpg)
+![Homepage](homepage.JPG)
 
 ---
 
@@ -40,10 +40,10 @@ graph TD
 ## Q&A Examples
 
 ### Agentic Multi-part Question
-![Question 1](question1.jpg)
+![Question 1](question1.JPG)
 
 ### Multimodal Table Retrieval
-![Question 2](question2.jpg)
+![Question 2](question2.JPG)
 
 ---
 
@@ -56,7 +56,7 @@ Evaluated using a custom sequential RAGAS pipeline across 3 retrieval strategies
 - **Context Precision** — are the retrieved chunks relevant to the question
 - **Context Recall** — were all relevant chunks found and used
 
-![Benchmark](benchmark.jpg)
+![Benchmark](benchmark.JPG)
 
 | Strategy | Faithfulness | Answer Relevancy | Context Precision | Context Recall |
 |----------|:-----------:|:----------------:|:-----------------:|:--------------:|
