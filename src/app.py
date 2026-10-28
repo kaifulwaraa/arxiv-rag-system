@@ -1,15 +1,3 @@
-import streamlit as st
-from qdrant_client import QdrantClient
-from qdrant_client.http.exceptions import UnexpectedResponse
-
-c = QdrantClient(url=st.secrets["QDRANT_URL"], api_key=st.secrets["QDRANT_API_KEY"], timeout=60)
-try:
-    st.write("Collections:", [x.name for x in c.get_collections().collections])
-    st.write("Points:", c.count("arxiv_papers").count)
-except UnexpectedResponse as e:
-    st.write("Status:", e.status_code)
-    st.write("Content:", e.content)
-st.stop()
 
 import streamlit as st
 import sys

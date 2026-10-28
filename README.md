@@ -180,6 +180,41 @@ streamlit run src/app.py
 **Multimodal** — Standard text extraction destroys table structure. Storing every cell as `[Column Header: value]` preserves row-column relationships and enables accurate table QA.
 
 ---
+## What Worked Well
+
+**Hybrid reranking** was the single biggest win. Combining BM25 keyword matching with dense vector search using Reciprocal Rank Fusion, then reranking with a cross-encoder, pushed context recall from 0.56 to 0.92 — a 64% improvement. The cross-encoder sees both the query and chunk together, giving it far stronger signal than embedding similarity alone.
+
+**Multimodal table extraction** solved a real problem. Standard PyMuPDF text extraction destroys table structure completely — rows and columns become meaningless strings. Switching to pdfplumber and storing every cell as `[Column Header: value]` preserved the structure. The system went from completely failing table questions to answering them accurately with exact numbers.
+
+**Agentic CROSS_PAPER mode** fixed the hardest question type. Single-search RAG scored 3/10 on cross-paper reasoning. Adding a dedicated question classifier, 4-5 targeted sub-queries pulling from multiple papers, and a synthesis prompt that explicitly organizes context by paper improved this to 9/10.
+
+---
+
+## What Failed and Why
+
+**Embedding fine-tuning did not improve retrieval.** I fine-tuned `all-MiniLM-L6-v2` on 760 domain-specific training pairs generated from paper chunks — first with `CosineSimilarityLoss`, then with `MultipleNegativesRankingLoss` and cross-paper pairs. Neither round improved over the base model meaningfully. The fine-tuned model won only 2/4 and then 1/4 test comparisons against the base model.
+
+The root causes were clear in retrospect:
+- `all-MiniLM-L6-v2` has only 22M parameters — too small to meaningfully adapt on limited data
+- 760 pairs is far below the 10,000+ needed for domain adaptation at this scale
+- AI-generated training questions from the same chunks the model already sees don't teach it new associations
+- `CosineSimilarityLoss` was the wrong choice for retrieval fine-tuning — should have used `MultipleNegativesRankingLoss` from day one
+
+**Chunk boundary splits caused missed answers.** Some specific values (like exact threshold numbers) sat at chunk boundaries — the end of one chunk and the start of the next. The retriever would return one but not the other, causing the LLM to say the value wasn't available even when it existed in the collection. Increasing `top_k` from 3 to 4-6 reduced but didn't eliminate this.
+
+**Cross-paper hallucination under thin context.** When both papers were present in retrieved chunks but neither contained the exact conceptual link being asked about, the LLM would sometimes invent a plausible-sounding connection rather than saying the context was insufficient. This is a fundamental LLM behavior, not a retrieval problem.
+
+---
+
+## What I Would Do Differently With More Resources
+
+**Better base model for fine-tuning.** `bge-base-en-v1.5` or `e5-base-v2` at 110M parameters would give the model enough capacity to actually learn domain-specific associations. With a larger model, the same 760 pairs would likely produce measurable improvement.
+
+**Knowledge graph for cross-paper reasoning.** The CROSS_PAPER mode works by searching harder, but the fundamental problem is that embedding models don't know that "Telco-RAG limitation" and "conventional RAG challenge" are the same concept across different papers. A knowledge graph linking concepts explicitly — built once during ingestion — would make cross-paper reasoning structural rather than probabilistic.
+
+**More papers.** 20 papers gives the system a narrow knowledge base. With 80-100 papers covering the same topics from different angles, cross-paper synthesis would improve naturally because more overlapping concepts would be available in the index.
+
+---
 
 ## Future Work
 
